@@ -6,4 +6,9 @@
     <RootNamespace>_003栈与队列</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\001线性表\001线性表.csproj" />
+    <ProjectReference Include="..\002链表\002链表.csproj" />
+  </ItemGroup>
+
 </Project>
