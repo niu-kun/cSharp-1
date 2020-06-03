@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace _002链表
 {
-    class LinkedList1<E>
+    public class LinkedList1<E>
     {
         class Node
         {
@@ -48,7 +47,7 @@ namespace _002链表
                 throw new ArgumentException("非法索引");
             }
 
-            
+
             if (index == 0)
             {
                 //Node node = new Node(e);
@@ -134,7 +133,7 @@ namespace _002链表
         public bool Contains(E e)
         {
             Node cur = head;
-            while(cur != null)
+            while (cur != null)
             {
                 if (cur.e.Equals(e))
                 {
@@ -149,7 +148,7 @@ namespace _002链表
         {
             StringBuilder res = new StringBuilder();
             Node cur = head;
-            while(cur != null)
+            while (cur != null)
             {
                 //res.Append(cur.e + "->"); ???
                 res.Append(cur + "->");
@@ -165,7 +164,7 @@ namespace _002链表
             {
                 throw new ArgumentException("非法索引");
             }
-            if(index == 0)
+            if (index == 0)
             {
                 Node delNode = head;
                 head = head.next;

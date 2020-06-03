@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace _002链表
 {
@@ -8,7 +7,7 @@ namespace _002链表
         static void Main(string[] args)
         {
             LinkedList1<int> l = new LinkedList1<int>();
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 l.AddFirst(i);
                 Console.WriteLine(l);
