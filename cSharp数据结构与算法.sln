@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "001线性表", "001线性表\001线性表.csproj", "{B89297E1-AED1-4185-9E3C-AF952E343C78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002栈", "002栈\002栈.csproj", "{11FEAFC1-8285-4882-BE22-1987DB2BA3E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "002链表", "002栈\002链表.csproj", "{11FEAFC1-8285-4882-BE22-1987DB2BA3E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "003栈与队列", "003栈与队列\003栈与队列.csproj", "{A5FEB435-2BB9-4524-A22E-34CD172DF498}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{11FEAFC1-8285-4882-BE22-1987DB2BA3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11FEAFC1-8285-4882-BE22-1987DB2BA3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11FEAFC1-8285-4882-BE22-1987DB2BA3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FEB435-2BB9-4524-A22E-34CD172DF498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FEB435-2BB9-4524-A22E-34CD172DF498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FEB435-2BB9-4524-A22E-34CD172DF498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FEB435-2BB9-4524-A22E-34CD172DF498}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
