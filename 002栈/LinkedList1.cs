@@ -128,14 +128,34 @@ namespace _002_栈
 
         public void Remove(E e)
         {
-            if (head.e.Equals(e))
+            if (head == null)
+                return;
+            if (head.Equals(e))
             {
                 head = head.next;
+                N--;
             }
-            for (int i = 0; i < N; i++)
+            else
             {
+                Node cur = head;
+                Node pre = null;
 
+                while (cur != null)
+                {
+                    if (cur.e.Equals(e))
+                    {
+                        break;
+                    }
+                    pre = cur;
+                    cur = cur.next;
+                }
+                while (cur != null)
+                {
+                    pre.next = pre.next.next;
+                    N--;
+                }
             }
+           
         }
 
     }
