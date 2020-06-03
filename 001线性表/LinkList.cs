@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure
+namespace _001线性表
 {
     class LinkList<T> : IListDS<T>
     {

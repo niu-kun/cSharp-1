@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace DataStructure
+namespace _001线性表
 {
     class Program
     {
