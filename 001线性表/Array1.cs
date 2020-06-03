@@ -1,11 +1,10 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace _001线性表
 {
-    class Array1<T>
+    public class Array1<T>
     {
         private T[] data;
         private int N;
@@ -18,21 +17,12 @@ namespace _001线性表
 
         public Array1() : this(10) { }
 
-        public int Capacity
-        {
-            get { return data.Length; }
-        }
+        public int Capacity => data.Length;
 
-        public int Count
-        {
-            get { return N; }
-        }
+        public int Count => N;
 
-        public bool IsEmpty
-        {
-            get { return N == 0; }
-        }
-        
+        public bool IsEmpty => N == 0;
+
         /// <summary>
         /// 添加元素
         /// </summary>
@@ -40,30 +30,24 @@ namespace _001线性表
         /// <param name="e"></param>
         public void Add(int index, T e)
         {
-            if (index<0 || index >N)
+            if (index < 0 || index > N)
                 throw new ArgumentException("数组索引越界");
 
             if (N == data.Length)
             {
-                ResetCapacity(data.Length*2);
+                ResetCapacity(data.Length * 2);
             }
 
-            for (int i = N-1; i >= index; i--)
+            for (int i = N - 1; i >= index; i--)
                 data[i + 1] = data[i];
 
             data[index] = e;
             N++;
         }
 
-        public void AddLast(T e)
-        {
-            Add(N, e);
-        }
+        public void AddLast(T e) => Add(N, e);
 
-        public void AddFirst(T e)
-        {
-            Add(0, e);
-        }
+        public void AddFirst(T e) => Add(0, e);
 
         /// <summary>
         /// 打印数组
@@ -72,12 +56,12 @@ namespace _001线性表
         public override string ToString()
         {
             StringBuilder res = new StringBuilder();
-            res.Append(string.Format("Array1: count = {0} capacity = {1}\n", N, data.Length));
+            //res.Append(string.Format("Array1: count = {0} capacity = {1}\n", N, data.Length));
             res.Append("[");
             for (int i = 0; i < N; i++)
             {
                 res.Append(data[i]);
-                if (i!=N-1)
+                if (i != N - 1)
                 {
                     res.Append(", ");
                 }
@@ -94,22 +78,16 @@ namespace _001线性表
         /// <returns></returns>
         public T Get(int index)
         {
-            if (index < 0 || index > N-1)
+            if (index < 0 || index > N - 1)
             {
                 throw new ArgumentOutOfRangeException("数组索引越界");
             }
             return data[index];
         }
 
-        public T GetFirst()
-        {
-            return Get(0);
-        }
+        public T GetFirst() => Get(0);
 
-        public T GetLast()
-        {
-            return Get(N - 1);
-        }
+        public T GetLast() => Get(N - 1);
 
         public void Set(int index, T e)
         {
@@ -150,28 +128,28 @@ namespace _001线性表
 
             T del = data[index];
 
-            for (int i = index+1; i < N; i++)
+            for (int i = index + 1; i < N; i++)
             {
                 data[i - 1] = data[i];
             }
             // 注意维护 N
             N--;
 
-            if (N == data.Length/4)
+            if (N == data.Length / 4)
             {
                 ResetCapacity(data.Length / 2);
             }
             return del;
         }
 
-        public void RemoveFirst()
+        public T RemoveFirst()
         {
-            RemoveAt(0);
+            return RemoveAt(0);
         }
 
-        public void RemoveLast()
+        public T RemoveLast()
         {
-            RemoveAt(N - 1);
+            return RemoveAt(N - 1);
         }
 
         public void ResetCapacity(int newCapacity)

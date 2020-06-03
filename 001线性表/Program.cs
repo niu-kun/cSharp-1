@@ -63,7 +63,7 @@ namespace _001线性表
             array1.RemoveLast();
             Console.WriteLine(array1);
 
-            LinkList<int> linkList = new LinkList<int>();
+            //LinkedList1<int> linkList = new LinkedList1<int>();
 
             Stopwatch st = new Stopwatch();
 
