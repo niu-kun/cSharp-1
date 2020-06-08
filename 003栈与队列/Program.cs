@@ -10,6 +10,7 @@ namespace _003栈与队列
 {
     class Program
     {
+        /*
         public static long TestStack(IStack<int> stack, int N)
         {
             Stopwatch t = new Stopwatch();
@@ -20,32 +21,46 @@ namespace _003栈与队列
                 stack.Pop();
             t.Stop();
             return t.ElapsedMilliseconds;
-        }
+        }*/
 
-        public static long TestStack2(Stack<int> stack, int N)
+        
+        public static long TestQueue(IQueue<int> queue, int N)
         {
             Stopwatch t = new Stopwatch();
             t.Start();
             for (int i = 0; i < N; i++)
-                stack.Push(i);
+                queue.Enqueue(i);
             for (int i = 0; i < N; i++)
-                stack.Pop();
+                queue.Dequeue();
             t.Stop();
             return t.ElapsedMilliseconds;
         }
 
+        
+        public static long TestQueue2(Queue<int> queue, int N)
+        {
+            Stopwatch t = new Stopwatch();
+            t.Start();
+            for (int i = 0; i < N; i++)
+                queue.Enqueue(i);
+            for (int i = 0; i < N; i++)
+                queue.Dequeue();
+            t.Stop();
+            return t.ElapsedMilliseconds;
+        }
+        
         static void Main(string[] args)
         {
-            int N = 20000000;
+            int N = 100000;
 
-            Array1Stack<int> arr = new Array1Stack<int>(N);
-            Console.WriteLine("Array1Stack'time: "+TestStack(arr, N) + "ms");
+            LinkedList1Queue<int> arr1 = new LinkedList1Queue<int>();
+            Console.WriteLine("Array1Queue'time: " + TestQueue(arr1, N) + "ms");
 
-            LinkedList1Stack<int> list = new LinkedList1Stack<int>();
-            Console.WriteLine("LinkedList1Stack'time: "+TestStack(list, N) + "ms");
+            LinkedList2Queue<int> arr2 = new LinkedList2Queue<int>();
+            Console.WriteLine("Array2Queue'time: " + TestQueue(arr2, N) + "ms");
 
-            Stack<int> stack = new Stack<int>(N);
-            Console.WriteLine("Stack'time: " + TestStack2(stack, N) + "ms");
+            Queue<int> arr3 = new Queue<int>();
+            Console.WriteLine("Array3Queue'time: " + TestQueue2(arr3, N) + "ms");
 
             Console.Read();
         }

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using _001线性表;
+using _001动态数组;
 
 namespace _003栈与队列
 {
