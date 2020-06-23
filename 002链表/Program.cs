@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace _002链表
 {
@@ -23,8 +24,23 @@ namespace _002链表
             Console.WriteLine(l);
 
 
-            Console.Read();
+            LinkedList1<int> linkedList1 = new LinkedList1<int>();
 
+            
+
+
+            LinkedListNode<int> linkedListNode = new LinkedListNode<int>(1);
+
+
+
+
+
+
+
+
+
+
+            Console.Read();
         }
     }
 }
