@@ -6,4 +6,10 @@
     <RootNamespace>_008哈希表</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="测试文件1\双城记.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
