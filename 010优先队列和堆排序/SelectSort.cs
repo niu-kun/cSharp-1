@@ -5,6 +5,9 @@ using System.Text;
 
 namespace _010优先队列和堆排序
 {
+    // 时间复杂度 O(N^2)
+    // 空间复杂度 O(1)
+    // 可优化 ？
     class SelectSort
     {
         public static void Sort(int[] arr)

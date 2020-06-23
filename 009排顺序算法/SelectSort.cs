@@ -7,6 +7,9 @@ namespace _009排顺序算法
 {
     class SelectSort
     {
+        // 时间复杂度 O(N^2) 最好情况 O(N)
+        // 空间复杂度 O(1)
+        // 可优化 ?
         public static void Sort(int[] arr)
         {
             int n = arr.Length;
