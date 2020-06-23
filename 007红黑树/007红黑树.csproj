@@ -6,4 +6,8 @@
     <RootNamespace>_007红黑树</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\006二叉查找树和递归\006二叉查找树和递归.csproj" />
+  </ItemGroup>
+
 </Project>
