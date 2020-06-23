@@ -9,19 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "002链表", "002链表\002�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "004集合与映射", "004集合与映射\004集合与映射.csproj", "{77FCBE12-C7EA-402C-A4F5-BB86BE9F74D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "005有序数组和二分查找", "005有序数组和二分查找\005有序数组和二分查找.csproj", "{5E975A0E-4C12-4610-AC4B-F1A9F671664B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "005有序数组和二分查找", "005有序数组和二分查找\005有序数组和二分查找.csproj", "{5E975A0E-4C12-4610-AC4B-F1A9F671664B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "006二叉查找树和递归", "006二叉查找树和递归\006二叉查找树和递归.csproj", "{C86E765E-B1F7-4A8F-AA64-E7F39524FD91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "006二叉查找树和递归", "006二叉查找树和递归\006二叉查找树和递归.csproj", "{C86E765E-B1F7-4A8F-AA64-E7F39524FD91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "007红黑树", "007红黑树\007红黑树.csproj", "{2B785F33-AB20-41F5-83DF-CEC12EDEF256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "007红黑树", "007红黑树\007红黑树.csproj", "{2B785F33-AB20-41F5-83DF-CEC12EDEF256}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "009排顺序算法", "009排顺序算法\009排顺序算法.csproj", "{FBDA4904-6845-4E54-BCB1-A5EC64AAEF02}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "010优先队列和堆排序", "010排序算法\010优先队列和堆排序.csproj", "{BE1D3480-FE56-47CA-83A8-FC953FEFEDE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "009排顺序算法", "009排顺序算法\009排顺序算法.csproj", "{FBDA4904-6845-4E54-BCB1-A5EC64AAEF02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "001动态数组", "001动态数组\001动态数组.csproj", "{E007B792-8658-422F-9838-1AAF4B26EE3E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "008哈希表", "008哈希表\008哈希表.csproj", "{8107817B-CA35-49CB-AACA-D064FE29912C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "010优先队列和堆排序", "010优先队列和堆排序\010优先队列和堆排序.csproj", "{BCEEF370-FB14-47C8-9BD9-A170E57D819E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,10 +57,6 @@ Global
 		{FBDA4904-6845-4E54-BCB1-A5EC64AAEF02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBDA4904-6845-4E54-BCB1-A5EC64AAEF02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBDA4904-6845-4E54-BCB1-A5EC64AAEF02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE1D3480-FE56-47CA-83A8-FC953FEFEDE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE1D3480-FE56-47CA-83A8-FC953FEFEDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE1D3480-FE56-47CA-83A8-FC953FEFEDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE1D3480-FE56-47CA-83A8-FC953FEFEDE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E007B792-8658-422F-9838-1AAF4B26EE3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E007B792-8658-422F-9838-1AAF4B26EE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E007B792-8658-422F-9838-1AAF4B26EE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{8107817B-CA35-49CB-AACA-D064FE29912C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8107817B-CA35-49CB-AACA-D064FE29912C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8107817B-CA35-49CB-AACA-D064FE29912C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCEEF370-FB14-47C8-9BD9-A170E57D819E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCEEF370-FB14-47C8-9BD9-A170E57D819E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCEEF370-FB14-47C8-9BD9-A170E57D819E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCEEF370-FB14-47C8-9BD9-A170E57D819E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
