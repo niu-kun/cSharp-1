@@ -2,65 +2,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using Microsoft.VisualBasic.CompilerServices;
+
 
 namespace _003栈与队列
 {
     class Program
     {
-        /*
-        public static long TestStack(IStack<int> stack, int N)
-        {
-            Stopwatch t = new Stopwatch();
-            t.Start();
-            for (int i = 0; i < N; i++)
-                stack.Push(i);
-            for (int i = 0; i < N; i++)
-                stack.Pop();
-            t.Stop();
-            return t.ElapsedMilliseconds;
-        }*/
 
-        
-        public static long TestQueue(IQueue<int> queue, int N)
-        {
-            Stopwatch t = new Stopwatch();
-            t.Start();
-            for (int i = 0; i < N; i++)
-                queue.Enqueue(i);
-            for (int i = 0; i < N; i++)
-                queue.Dequeue();
-            t.Stop();
-            return t.ElapsedMilliseconds;
-        }
-
-        
-        public static long TestQueue2(Queue<int> queue, int N)
-        {
-            Stopwatch t = new Stopwatch();
-            t.Start();
-            for (int i = 0; i < N; i++)
-                queue.Enqueue(i);
-            for (int i = 0; i < N; i++)
-                queue.Dequeue();
-            t.Stop();
-            return t.ElapsedMilliseconds;
-        }
         
         static void Main(string[] args)
         {
-            int N = 100000;
+            int[] a = TestSeach.ReadFile("测试文件3/TopM.txt");
 
-            LinkedList1Queue<int> arr1 = new LinkedList1Queue<int>();
-            Console.WriteLine("Array1Queue'time: " + TestQueue(arr1, N) + "ms");
+            QuickSort3.Sort(a);
+            for (int i = 0; i < 10; i++)
+                Console.Write(a[i]+", ");
 
-            LinkedList2Queue<int> arr2 = new LinkedList2Queue<int>();
-            Console.WriteLine("Array2Queue'time: " + TestQueue(arr2, N) + "ms");
+            Console.WriteLine();
 
-            Queue<int> arr3 = new Queue<int>();
-            Console.WriteLine("Array3Queue'time: " + TestQueue2(arr3, N) + "ms");
+            MaxPQ<int> pq = new MaxPQ<int>(10);
+            FileStream fileStresm = new FileStream("测试文件3/TopM.txt", FileMode.Open);
+            StreamReader streamReader = new StreamReader(fileStresm);
+
+            while (!streamReader.EndOfStream)
+            {
+                int value = int.Parse(streamReader.ReadLine());
+                if (pq.Count < 10)
+                    pq.Enqueue(value);
+                else if (value < pq.Peek())
+                {
+                    pq.Dequeue();
+                    pq.Enqueue(value);
+                }
+            }
+
+            Console.WriteLine(pq);
+
 
             Console.Read();
         }

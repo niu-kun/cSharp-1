@@ -11,4 +11,10 @@
     <ProjectReference Include="..\002链表\002链表.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="测试文件3\TopM.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
