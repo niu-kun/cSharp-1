@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO.MemoryMappedFiles;
+using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace _006二叉查找树和递归
-{
-    class BST1<E> where E:IComparable<E>
+{ 
+    class BST1<E> where E : IComparable<E>
     {
         private class Node
         {
@@ -15,8 +21,8 @@ namespace _006二叉查找树和递归
             public Node(E e)
             {
                 this.e = e;
-                this.left = null;
-                this.right = null;
+                left = null;
+                right = null;
             }
         }
 
@@ -29,13 +35,12 @@ namespace _006二叉查找树和递归
             N = 0;
         }
 
-        public int Count { get => N; }
-        public bool IsEmpty { get => N == 0; }
+        public int Count { get { return N; } }
 
-        // 非递归添加
+        public bool IsEmpty { get { return N == 0; } }
+
         public void add(E e)
         {
-            // 根节点没有父节点需要单独添加
             if (root == null)
             {
                 root = new Node(e);
@@ -46,38 +51,290 @@ namespace _006二叉查找树和递归
             Node pre = null;
             Node cur = root;
 
-            // 循环里面移动cur指针
-            while (cur!=null)
+            while (cur != null)
             {
-                // 树中不允许添加重复元素
-                if (e.CompareTo(cur.e) == 0) 
-                {
+                if (e.CompareTo(cur.e) == 0)
                     return;
-                }
 
-                // 记录cur的位置
                 pre = cur;
 
-                // 移动cur指向
                 if (e.CompareTo(cur.e) < 0)
-                {
-                    cur = cur.left; // 向左移动 在左子树中查找
-                }
-                else
+                    cur = cur.left;
+                else   //e.CompareTo(cur.e) > 0 
                     cur = cur.right;
             }
 
-            // while循环结束cur==null， 通过元素e创建新节点放到cur中
             cur = new Node(e);
 
-            // 判断cur是pre的左孩子还是有孩子
             if (e.CompareTo(pre.e) < 0)
                 pre.left = cur;
-            else
+            else    //e.CompareTo(pre.e) > 0
                 pre.right = cur;
 
             N++;
         }
+
+        public void Add(E e)
+        {
+            root = Add(root, e);
+        }
+
+        //以node为根的树中添加元素e，添加后返回根节点node
+        private Node Add(Node node, E e)
+        {
+            if (node == null)
+            {
+                N++;
+                return new Node(e);
+            }
+
+            if (e.CompareTo(node.e) < 0)
+                node.left = Add(node.left, e);
+            else if (e.CompareTo(node.e) > 0)
+                node.right = Add(node.right, e);
+
+            return node;
+        }
+
+        public bool Contains(E e)
+        {
+            return Contains(root, e);
+        }
+
+        //以node为根的树是否包含元素e
+        private bool Contains(Node node, E e)
+        {
+            if (node == null)
+                return false;
+
+            if (e.CompareTo(node.e) == 0)
+                return true;
+            else if (e.CompareTo(node.e) < 0)
+                return Contains(node.left, e);
+            else  //e.CompareTo(node.e) > 0
+                return Contains(node.right, e);
+        }
+
+        public void PreOrder()
+        {
+            PreOrder(root);
+        }
+        // 前序遍历以node为根的二叉查找树 
+        // 根->左->右
+        private void PreOrder(Node node)
+        {
+            if (node == null)
+                return;
+
+            Console.WriteLine(node.e);
+            PreOrder(node.left);
+            PreOrder(node.right);
+        }
+        
+
+        public void InOrder()
+        {
+            InOrder(root);
+        }
+        // 中序遍历以node为根的二叉树查找
+        // 左->根->右
+        private void InOrder(Node node)
+        {
+            if (node == null)
+                return;
+
+            InOrder(node.left);
+            Console.WriteLine(node.e);
+            InOrder(node.right);
+        }
+
+        public void PostOrder()
+        {
+            PostOrder(root);
+        }
+        // 后序遍历 左->右->根
+        private void PostOrder(Node node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            PostOrder(node.left);
+            PostOrder(node.right);
+            Console.WriteLine(node.e);
+        }
+
+        // 层序遍历
+        public void LevelOrder()
+        {
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(root);
+
+            while (q.Count != 0)
+            {
+                Node cur = q.Dequeue();
+                Console.WriteLine(cur.e);
+
+                if (cur.left != null)
+                {
+                    q.Enqueue(cur.left);
+                }
+                if (cur.right != null)
+                {
+                    q.Enqueue(cur.right);
+                }
+            }
+        }
+
+        public E Min()
+        {
+            if (IsEmpty)
+            {
+                throw new ArgumentException("空树！");
+            }
+            return Min(root).e;
+        }
+        private Node Min(Node node)
+        {
+            if (node.left == null)
+                return node;
+            return Min(node.left);
+        }
+
+        public E Max()
+        {
+            if (root == null)
+            {
+                throw new ArgumentException("空树！");
+            }
+            return Max(root).e;
+        }
+        private Node Max(Node node)
+        {
+            if (node.right == null)
+            {
+                return node;
+            }
+            return Max(node.right);
+        }
+
+        // 从二叉查找树中删除最小值所在节点
+        public E RemoveMin()
+        {
+            E ret = Min();
+            root = RemoveMin(root);
+            return ret;
+        }
+
+        // 删除掉以node为根的二叉查找树中的最小节点
+        // 返回删除节点后新的二叉查找树的根
+        private Node RemoveMin(Node node)
+        {
+            if (node.left == null)
+            {
+                this.N--;
+                return node.right;
+            }
+
+            node.left = RemoveMin(node.left);
+            return node;
+        }
+
+
+
+
+        // 从二叉查找树中删除最大值所在节点
+        public E RemoveMax()
+        {
+            E ret = Max();
+            root = RemoveMax(root);
+            return ret;
+        }
+
+        // 删除掉以node为根的二叉查找树中的最大节点
+        // 返回删除节点后新的二叉查找树的根
+        private Node RemoveMax(Node node)
+        {
+
+            if (node.right == null)
+            {
+                N--;
+                return node.left;
+            }
+
+            node.right = RemoveMax(node.right);
+            return node;
+        }
+
+
+        // 从二叉查找树中删除元素为e的节点
+        public void Remove(E e)
+        {
+            root = Remove(root, e);
+        }
+
+        // 删除掉以node为根的二叉查找树中值为e的节点
+        // 返回删除节点后新的二叉查找树的根
+        private Node Remove(Node node, E e)
+        {
+            if (node == null) return null;
+
+            if (e.CompareTo(node.e) < 0)
+            {
+                node.left = Remove(node.left, e);
+                return node;
+            }
+            else if (e.CompareTo(node.e) > 0)
+            {
+                node.right = Remove(node.right, e);
+                return node;
+            }
+            else //e.CompareTo(node.e) == 0
+            {
+                // 要删除的节点只有左孩子
+                if (node.right == null)
+                {
+                    N--;
+                    return node.left;
+                }
+
+                // 要删除的节点只有右孩子
+                if (node.left == null)
+                {
+                    N--;
+                    return node.right;
+                }
+
+                // 要删除的节点左右都有孩子
+                // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+                // 用这个节点顶替待删除节点的位置
+
+                Node s = Min(node.right);
+                s.right = RemoveMin(node.right);
+                s.left = node.left;
+
+                return s;
+            }
+        }
+
+
+        public int MaxHeight()
+        {
+            return MaxHeight(root);
+        }
+
+        private int MaxHeight(Node node)
+        {
+            if (node == null) return 0;
+
+            int l = MaxHeight(node.left);
+            int r = MaxHeight(node.right);
+            var rr = Math.Max(l, r) + 1;
+            return rr;
+
+            //return Math.Max(MaxHeight(node.left), MaxHeight(node.right)) + 1;
+        }
+
 
 
     }

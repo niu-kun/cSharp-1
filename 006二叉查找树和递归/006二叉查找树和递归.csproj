@@ -6,4 +6,10 @@
     <RootNamespace>_006二叉查找树和递归</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="测试文件1\双城记.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
